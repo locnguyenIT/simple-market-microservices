@@ -3,9 +3,11 @@ package com.ntloc.notification;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.ntloc.notification.NotificationConstant.NOTIFICATION_NOT_FOUND;
+import static com.ntloc.notification.NotificationConstant.PJ_AT;
 
 @AllArgsConstructor
 @Service
@@ -25,4 +27,14 @@ public class NotificationService {
         return notificationMapper.toDTO(product);
     }
 
+    public void sendNotification(NotificationRequest notificationRequest) {
+        notificationRepository.save(NotificationEntity.builder()
+                .toCustomerId(notificationRequest.getToCustomerId())
+                .toCustomerName(notificationRequest.getToCustomerName())
+                .toCustomerEmail(notificationRequest.getToCustomerEmail())
+                .sender(PJ_AT)
+                .message(notificationRequest.getMessage())
+                .sentAt(LocalDateTime.now())
+                .build());
+    }
 }

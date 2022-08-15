@@ -15,7 +15,6 @@ public class OrdersDataSource {
             OrdersEntity orders = OrdersEntity.builder()
                     .customerId(1L)
                     .productId(1L)
-                    .amount(10)
                     .createAt(LocalDateTime.now()).build();
             ordersRepository.save(orders);
         };

@@ -15,7 +15,6 @@ public class PaymentDataSource {
             PaymentEntity payment = PaymentEntity.builder()
                     .customerId(1L)
                     .ordersId(1L)
-                    .total(5000)
                     .createAt(LocalDateTime.now())
                     .build();
             paymentRepository.save(payment);
