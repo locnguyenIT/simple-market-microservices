@@ -1,4 +1,4 @@
-package com.ntloc.product;
+package com.ntloc.orders.response;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ProductDTO {
+public class ProductResponse {
 
     private Long id;
     private String name;

@@ -1,4 +1,4 @@
-package com.ntloc.payment;
+package com.ntloc.customer.response;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class PaymentDTO {
+public class PaymentResponse {
 
     private Long id;
     private Long customerId;

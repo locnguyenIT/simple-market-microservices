@@ -20,6 +20,5 @@ public class PaymentEntity {
     private Long id;
     private Long customerId;
     private Long ordersId;
-    private Integer total;
     private LocalDateTime createAt;
 }

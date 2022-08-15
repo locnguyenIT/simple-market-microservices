@@ -1,15 +1,15 @@
 package com.ntloc.payment;
 
+import com.ntloc.payment.request.PaymentRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.ntloc.payment.PaymentConstant.URI_REST_API_VERSION_PAYMENT;
 
+@Slf4j
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = URI_REST_API_VERSION_PAYMENT)
@@ -24,6 +24,13 @@ public class PaymentController {
 
     @GetMapping(path = "/{id}")
     public PaymentDTO getPayment(@PathVariable("id") Long id) {
+        log.info("PaymentId {}", id);
         return paymentService.getPayment(id);
+    }
+
+    @PostMapping
+    public PaymentDTO payment(@RequestBody PaymentRequest paymentRequest) {
+        log.info("Customer payment {}", paymentRequest);
+        return paymentService.payment(paymentRequest);
     }
 }

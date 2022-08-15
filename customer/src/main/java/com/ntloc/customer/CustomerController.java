@@ -1,10 +1,12 @@
 package com.ntloc.customer;
 
+import com.ntloc.customer.request.OrdersRequest;
+import com.ntloc.customer.request.PaymentRequest;
+import com.ntloc.customer.response.OrdersResponse;
+import com.ntloc.customer.response.PaymentResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +24,18 @@ public class CustomerController {
     public List<CustomerDTO> getAllCustomer() {
         return customerService.getAllCustomer();
     }
+
+    @PostMapping(path = "/orders")
+    public OrdersResponse orders(@RequestBody OrdersRequest ordersRequest) {
+        log.info("Customer orders {}", ordersRequest);
+        return customerService.orders(ordersRequest);
+    }
+
+    @PostMapping(path = "/payment")
+    public PaymentResponse payment(@RequestBody PaymentRequest paymentRequest) {
+        log.info("Customer payment {}", paymentRequest);
+        return customerService.payment(paymentRequest);
+    }
+
 
 }
