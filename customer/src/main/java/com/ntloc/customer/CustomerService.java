@@ -34,6 +34,9 @@ public class CustomerService {
         OrdersResponse ordersResponse = restTemplate.postForObject("http://localhost:8030/api/v1/orders",
                 ordersRequest, OrdersResponse.class);
 
+//        OrdersResponse ordersResponse = restTemplate.postForObject("http://ORDERS/api/v1/orders",
+//                ordersRequest, OrdersResponse.class);
+
         return ordersResponse;
     }
 
@@ -43,6 +46,9 @@ public class CustomerService {
 
         PaymentResponse paymentResponse = restTemplate.postForObject("http://localhost:8040/api/v1/payment",
                 paymentRequest, PaymentResponse.class);
+
+//        PaymentResponse paymentResponse = restTemplate.postForObject("http://PAYMENT/api/v1/payment",
+//                paymentRequest, PaymentResponse.class);
 
         return paymentResponse;
     }

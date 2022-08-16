@@ -37,6 +37,11 @@ public class OrdersService {
         ProductResponse productResponse = restTemplate.getForObject("http://localhost:8020/api/v1/product/{id}",
                 ProductResponse.class,
                 ordersRequest.getProductId());
+
+//        ProductResponse productResponse = restTemplate.getForObject("http://PRODUCT/api/v1/product/{id}",
+//                ProductResponse.class,
+//                ordersRequest.getProductId());
+
         //Todo: Handle orders process
         OrdersEntity orders = ordersRepository.save(OrdersEntity.builder()
                 .customerId(ordersRequest.getCustomerId())
@@ -53,6 +58,9 @@ public class OrdersService {
 
         restTemplate.postForObject("http://localhost:8050/api/v1/notification",
                 notificationRequest,Void.class);
+
+//        restTemplate.postForObject("http://NOTIFICATION/api/v1/notification",
+//                notificationRequest,Void.class);
 
         return ordersMapper.toDTO(orders);
 
