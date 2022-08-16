@@ -36,6 +36,10 @@ public class PaymentService {
         OrdersResponse ordersResponse = restTemplate.getForObject("http://localhost:8030/api/v1/orders/{id}",
                 OrdersResponse.class,
                 paymentRequest.getOrdersId());
+
+//        OrdersResponse ordersResponse = restTemplate.getForObject("http://ORDERS/api/v1/orders/{id}",
+//                OrdersResponse.class,
+//                paymentRequest.getOrdersId());
         //Todo: Handle payment process
         PaymentEntity payment = paymentRepository.save(PaymentEntity.builder()
                 .customerId(paymentRequest.getCustomerId())
@@ -52,6 +56,9 @@ public class PaymentService {
 
         restTemplate.postForObject("http://localhost:8050/api/v1/notification",
                 notificationRequest,Void.class);
+
+//        restTemplate.postForObject("http://NOTIFICATION/api/v1/notification",
+//                notificationRequest,Void.class);
 
         return paymentMapper.toDTO(payment);
     }

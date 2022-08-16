@@ -14,6 +14,7 @@
     <module>orders</module>
     <module>payment</module>
     <module>notification</module>
+      <module>eureka-server</module>
   </modules>
 
   <name>ntlocmicroservices</name>
