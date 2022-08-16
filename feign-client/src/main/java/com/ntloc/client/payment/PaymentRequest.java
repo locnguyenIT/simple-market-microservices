@@ -1,4 +1,4 @@
-package com.ntloc.customer.request;
+package com.ntloc.client.payment;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,10 +7,10 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class OrdersRequest {
+public class PaymentRequest {
 
     private Long customerId;
     private String customerName;
     private String customerEmail;
-    private Long productId;
+    private Long ordersId;
 }
