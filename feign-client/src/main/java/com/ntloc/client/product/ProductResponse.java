@@ -1,4 +1,4 @@
-package com.ntloc.orders.response;
+package com.ntloc.client.product;
 
 import lombok.Getter;
 import lombok.Setter;

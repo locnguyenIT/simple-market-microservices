@@ -1,9 +1,9 @@
 package com.ntloc.customer;
 
-import com.ntloc.customer.request.OrdersRequest;
-import com.ntloc.customer.request.PaymentRequest;
-import com.ntloc.customer.response.OrdersResponse;
-import com.ntloc.customer.response.PaymentResponse;
+import com.ntloc.client.orders.OrdersRequest;
+import com.ntloc.client.orders.OrdersResponse;
+import com.ntloc.client.payment.PaymentRequest;
+import com.ntloc.client.payment.PaymentResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

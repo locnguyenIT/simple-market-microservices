@@ -1,16 +1,18 @@
-package com.ntloc.customer.request;
+package com.ntloc.client.payment;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
-public class PaymentRequest {
+public class PaymentResponse {
 
+    private Long id;
     private Long customerId;
-    private String customerName;
-    private String customerEmail;
     private Long ordersId;
+    private LocalDateTime createAt;
 }

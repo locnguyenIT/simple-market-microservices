@@ -1,11 +1,12 @@
 package com.ntloc.orders;
 
-import com.ntloc.orders.request.NotificationRequest;
-import com.ntloc.orders.request.OrdersRequest;
-import com.ntloc.orders.response.ProductResponse;
+import com.ntloc.client.notification.NotificationClient;
+import com.ntloc.client.notification.NotificationRequest;
+import com.ntloc.client.orders.OrdersRequest;
+import com.ntloc.client.product.ProductClient;
+import com.ntloc.client.product.ProductResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,7 +19,8 @@ public class OrdersService {
 
     private final OrdersRepository ordersRepository;
     private final OrdersMapper ordersMapper;
-    private final RestTemplate restTemplate;
+    private final ProductClient productClient;
+    private final NotificationClient notificationClient;
 
     public List<OrdersDTO> getAllOrders() {
         List<OrdersEntity> allOrders = ordersRepository.findAll();
@@ -34,13 +36,7 @@ public class OrdersService {
 
     public OrdersDTO order(OrdersRequest ordersRequest) {
 
-        ProductResponse productResponse = restTemplate.getForObject("http://localhost:8020/api/v1/product/{id}",
-                ProductResponse.class,
-                ordersRequest.getProductId());
-
-//        ProductResponse productResponse = restTemplate.getForObject("http://PRODUCT/api/v1/product/{id}",
-//                ProductResponse.class,
-//                ordersRequest.getProductId());
+        ProductResponse product = productClient.getProduct(ordersRequest.getProductId());
 
         //Todo: Handle orders process
         OrdersEntity orders = ordersRepository.save(OrdersEntity.builder()
@@ -56,11 +52,7 @@ public class OrdersService {
                 .message(String.format("Hi %s. Your orders has been success.", ordersRequest.getCustomerName()))
                 .build();
 
-        restTemplate.postForObject("http://localhost:8050/api/v1/notification",
-                notificationRequest,Void.class);
-
-//        restTemplate.postForObject("http://NOTIFICATION/api/v1/notification",
-//                notificationRequest,Void.class);
+        notificationClient.sendNotification(notificationRequest);
 
         return ordersMapper.toDTO(orders);
 

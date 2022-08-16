@@ -1,4 +1,4 @@
-package com.ntloc.orders.request;
+package com.ntloc.client.notification;
 
 import lombok.*;
 
