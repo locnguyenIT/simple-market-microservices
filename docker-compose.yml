@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+#  mysql:
+#    container_name: mysql
+#    image: mysql
+#    ports:
+#      - "3307:3306"
+#    volumes:
+#      - data:/var/lib/mysql
+#    networks:
+#      - mysql
+#    restart: unless-stopped
+#    environment:
+#      MYSQL_ROOT_PASSWORD: password
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - spring
+networks:
+  mysql:
+    driver: bridge
+  spring:
+    driver: bridge
+#volumes:
+#  data:
