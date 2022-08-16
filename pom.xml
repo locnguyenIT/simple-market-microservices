@@ -17,6 +17,7 @@
     <module>notification</module>
     <module>eureka-server</module>
     <module>feign-client</module>
+    <module>gateway</module>
   </modules>
 
   <name>ntlocmicroservices</name>

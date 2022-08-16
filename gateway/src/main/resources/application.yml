@@ -1,0 +1,39 @@
+#Server
+server:
+  port: 8080
+#Spring
+spring:
+  application:
+    name: gateway
+  zipkin:
+    baseUrl: http://localhost:9411
+  cloud:
+    gateway:
+      routes:
+        - id: customer
+          uri: lb://CUSTOMER
+          predicates:
+            - Path=/api/v1/customer/**
+        - id: product
+          uri: lb://PRODUCT
+          predicates:
+            - Path=/api/v1/product/**
+        - id: orders
+          uri: lb://ORDERS
+          predicates:
+            - Path=/api/v1/orders/**
+        - id: payment
+          uri: lb://PAYMENT
+          predicates:
+            - Path=/api/v1/payment/**
+        - id: notification
+          uri: lb://NOTIFICATION
+          predicates:
+            - Path=/api/v1/notification/**
+#Eureka-Client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
