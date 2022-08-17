@@ -1,5 +1,6 @@
 package com.ntloc.notification;
 
+import com.ntloc.client.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

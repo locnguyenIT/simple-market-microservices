@@ -4,7 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@SpringBootApplication
+
+@EnableEurekaClient
+//ScanBasePackages is scan package to fetch all class from that package
+@SpringBootApplication(
+        scanBasePackages = {
+                "com.ntloc.notification",
+                "com.ntloc.amqp",
+        }
+)
 public class NotificationApplication {
     public static void main(String[] args) {
         SpringApplication.run(NotificationApplication.class, args);

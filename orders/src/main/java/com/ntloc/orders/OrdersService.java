@@ -1,6 +1,6 @@
 package com.ntloc.orders;
 
-import com.ntloc.client.notification.NotificationClient;
+import com.ntloc.amqp.RabbitMQProducer;
 import com.ntloc.client.notification.NotificationRequest;
 import com.ntloc.client.orders.OrdersRequest;
 import com.ntloc.client.product.ProductClient;
@@ -20,7 +20,7 @@ public class OrdersService {
     private final OrdersRepository ordersRepository;
     private final OrdersMapper ordersMapper;
     private final ProductClient productClient;
-    private final NotificationClient notificationClient;
+    private final RabbitMQProducer rabbitMQProducer;
 
     public List<OrdersDTO> getAllOrders() {
         List<OrdersEntity> allOrders = ordersRepository.findAll();
@@ -35,7 +35,7 @@ public class OrdersService {
 
 
     public OrdersDTO order(OrdersRequest ordersRequest) {
-
+        //1. Find product
         ProductResponse product = productClient.getProduct(ordersRequest.getProductId());
 
         //Todo: Handle orders process
@@ -52,8 +52,9 @@ public class OrdersService {
                 .message(String.format("Hi %s. Your orders has been success.", ordersRequest.getCustomerName()))
                 .build();
 
-        notificationClient.sendNotification(notificationRequest);
-
+        //3. Send notification to notification.queue
+        rabbitMQProducer.publish("internal.exchange", "internal.notification.routing-key", notificationRequest);
+        //4. Map & return
         return ordersMapper.toDTO(orders);
 
     }
