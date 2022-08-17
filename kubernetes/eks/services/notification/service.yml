@@ -9,5 +9,6 @@ spec:
     app: notification # has to match .metadata.labels && template.metadata.labels of deployment || stafulset
   ports:
     - port: 80
+      name: http
       targetPort: 8050 # has to match containerPort of deployment || stafulset
   type: ClusterIP #IP address
