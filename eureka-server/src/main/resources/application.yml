@@ -7,6 +7,15 @@ spring:
     name: eureka-server
   zipkin:
     baseUrl: http://localhost:9411
+#Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 #Eureka-Server
 eureka:
   client:
