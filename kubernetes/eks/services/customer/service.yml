@@ -10,4 +10,4 @@ spec:
   ports:
     - port: 80
       targetPort: 8010 # has to match containerPort of deployment || stafulset
-  type: ClusterIP #IP address
+  type: LoadBalancer #IP address

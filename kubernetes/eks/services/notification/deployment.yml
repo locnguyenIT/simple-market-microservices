@@ -27,7 +27,7 @@ spec:
             - containerPort: 8050
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: kube
+              value: eks
             - name: DB_USERNAME
               valueFrom:
                 secretKeyRef:
