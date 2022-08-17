@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: customer
-          image: ntloc/customer:latest
+          image: ntloc/customer:17.08.2022.23.07.56
           imagePullPolicy: Always
           resources:
             requests:
