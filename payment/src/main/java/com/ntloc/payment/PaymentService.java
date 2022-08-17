@@ -51,7 +51,7 @@ public class PaymentService {
                 .toCustomerName(paymentRequest.getCustomerName())
                 .toCustomerEmail(paymentRequest.getCustomerEmail())
                 .subject("Payment process")
-                .message(String.format("Hi %s. Your payment has been success. Thank you for visiting our PJ-AT team", paymentRequest.getCustomerName()))
+                .message("Your payment has been success. Thank you for visiting our PJ-AT team")
                 .build();
 
         //3. Send notification to notification.queue

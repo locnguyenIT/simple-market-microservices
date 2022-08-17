@@ -1,0 +1,43 @@
+#Server
+server:
+    port: 8010
+    servlet:
+        context-path: /customer
+    error:
+        include-message: always
+#Management
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always
+#Spring
+spring:
+    application:
+        name: customer
+    datasource:
+        url: jdbc:mysql://aws-rds.cgxgnpipxxxq.ap-southeast-1.rds.amazonaws.com:3306/customer
+        username: ${DB_USERNAME}
+        password: ${DB_PASSWORD}
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        properties:
+            hibernate:
+                format_sql: true
+        show_sql: true
+    zipkin:
+        baseUrl: http://zipkin:9411
+    rabbitmq:
+        addresses: rabbitmq:5672
+#Eureka-Client
+eureka:
+    client:
+        service-url:
+            defaultZone: http://eureka-server:8761/eureka
+        fetch-registry: true
+        register-with-eureka: true
+        enabled: false

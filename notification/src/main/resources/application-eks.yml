@@ -1,0 +1,57 @@
+#Server
+server:
+  port: 8050
+  servlet:
+    context-path: /notification
+  error:
+    include-message: always
+#Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+#Spring
+spring:
+  application:
+    name: notification
+  datasource:
+    url: jdbc:mysql://aws-rds.cgxgnpipxxxq.ap-southeast-1.rds.amazonaws.com:3306/notification
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show_sql: true
+  zipkin:
+    baseUrl: http://zipkin:9411
+  rabbitmq:
+    addresses: rabbitmq:5672
+#Eureka-Client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: false
+#RabbitMQ
+rabbitmq:
+  exchange:
+    internal: internal.exchange
+  queue:
+    notification: notification.queue
+  routing-key:
+    internal-notification: internal.notification.routing-key
+#AWS
+aws:
+  credentials:
+    accessKey: ${AWS_ACCESS_KEY_ID}
+    secretKey: ${AWS_SECRET_ACCESS_KEY}
+

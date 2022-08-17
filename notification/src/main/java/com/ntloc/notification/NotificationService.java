@@ -17,6 +17,7 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
     private final NotificationMapper notificationMapper;
+    private final AWSEmailService emailService;
 
     public List<NotificationDTO> getAllNotification() {
         List<NotificationEntity> listProduct = notificationRepository.findAll();
@@ -40,6 +41,16 @@ public class NotificationService {
                 .sentAt(LocalDateTime.now())
                 .build());
 
+        emailService.send(notificationRequest.getToCustomerEmail(),
+        buildEmail(notificationRequest.getToCustomerName(),
+                notificationRequest.getMessage()),notificationRequest.getSubject());
+
+    }
+
+    public String buildEmail(String name, String message) {
+        return "<p>Hi " + name + "</p>"
+                + "<p>" + message + "</p>"
+                + "<p>Have a nice day !</p>";
     }
 
 }
