@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  serviceName: mysql
+  replicas: 1 # 1 pod
+  selector:
+    matchLabels:
+      app: mysql # has to match template.metadata.labels
+  template:
+    metadata:
+      labels:
+        app: mysql # has to match .spec.selector.matchLabels & match selector of service
+    spec: # Information of pod
+      containers:
+        - name: mysql #MYSQL_HOST
+          image: mysql:8.0
+          ports:
+            - containerPort: 3306 # has to match targetPort of service
+              name: mysql
+          envFrom:
+            - configMapRef:
+                name: mysql-config
+          volumeMounts:
+            - name: mysql #has to match name of volumes
+              mountPath: /var/lib/mysql
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: mysql
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim # has to match metadata.name of PersistentVolumeClaim
+      restartPolicy: Always
