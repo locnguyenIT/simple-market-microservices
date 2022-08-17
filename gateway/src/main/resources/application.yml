@@ -22,23 +22,23 @@ spring:
         - id: customer
           uri: lb://CUSTOMER
           predicates:
-            - Path=/api/v1/customer/**
+            - Path=/customer/api/v1/customer/**
         - id: product
           uri: lb://PRODUCT
           predicates:
-            - Path=/api/v1/product/**
+            - Path=/product/api/v1/product/**
         - id: orders
           uri: lb://ORDERS
           predicates:
-            - Path=/api/v1/orders/**
+            - Path=/orders/api/v1/orders/**
         - id: payment
           uri: lb://PAYMENT
           predicates:
-            - Path=/api/v1/payment/**
+            - Path=/payment/api/v1/payment/**
         - id: notification
           uri: lb://NOTIFICATION
           predicates:
-            - Path=/api/v1/notification/**
+            - Path=/notification/api/v1/notification/**
 #Eureka-Client
 eureka:
   client:
