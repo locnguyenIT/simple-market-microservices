@@ -36,6 +36,8 @@
     <spring.boot.maven.plugin.version>2.6.4</spring.boot.maven.plugin.version>
     <spring.boot.dependencies.version>2.6.4</spring.boot.dependencies.version>
     <spring.cloud.dependencies.version>2021.0.1</spring.cloud.dependencies.version>
+    <jib.maven.plugin.version>3.2.0</jib.maven.plugin.version>
+    <image>ntloc/${project.artifactId}</image>
   </properties>
 
   <!--  All sub-module can pick one of list spring dependencies in there pom.xml -->
