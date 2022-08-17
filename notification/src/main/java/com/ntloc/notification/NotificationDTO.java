@@ -15,6 +15,7 @@ public class NotificationDTO {
     private Long toCustomerId;
     private String toCustomerName;
     private String toCustomerEmail;
+    private String subject;
     private String sender;
     private String message;
     private LocalDateTime sentAt;

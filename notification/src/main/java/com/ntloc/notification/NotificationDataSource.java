@@ -16,8 +16,9 @@ public class NotificationDataSource {
                     .toCustomerId(1L)
                     .toCustomerName("Nguyen Thanh Loc")
                     .toCustomerEmail("ntloc.developer@gmail.com")
+                    .subject("Microservices")
                     .sender("ntloc")
-                    .message("Welcome to PJ-AT microservices")
+                    .message("Welcome to PJ-AT")
                     .sentAt(LocalDateTime.now())
                     .build();
 
