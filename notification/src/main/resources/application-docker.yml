@@ -1,5 +1,7 @@
 server:
   port: 8050
+  servlet:
+    context-path: /notification
   error:
     include-message: always
 #Management

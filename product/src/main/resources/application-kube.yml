@@ -1,6 +1,8 @@
 #Server
 server:
   port: 8020
+  servlet:
+    context-path: /product
   error:
     include-message: always
 #Management
