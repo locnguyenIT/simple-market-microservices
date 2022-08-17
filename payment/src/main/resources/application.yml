@@ -20,6 +20,8 @@ spring:
     show_sql: true
   zipkin:
     baseUrl: http://localhost:9411
+  rabbitmq:
+    addresses: localhost:5672
 #Eureka-Client
 eureka:
   client:

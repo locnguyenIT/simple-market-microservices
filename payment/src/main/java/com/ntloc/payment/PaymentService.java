@@ -1,6 +1,6 @@
 package com.ntloc.payment;
 
-import com.ntloc.client.notification.NotificationClient;
+import com.ntloc.amqp.RabbitMQProducer;
 import com.ntloc.client.notification.NotificationRequest;
 import com.ntloc.client.orders.OrdersClient;
 import com.ntloc.client.orders.OrdersResponse;
@@ -20,7 +20,7 @@ public class PaymentService {
     private final PaymentRepository paymentRepository;
     private final PaymentMapper paymentMapper;
     private final OrdersClient ordersClient;
-    private final NotificationClient notificationClient;
+    private final RabbitMQProducer rabbitMQProducer;
 
     public List<PaymentDTO> getAllPayment() {
         List<PaymentEntity> allOrders = paymentRepository.findAll();
@@ -35,9 +35,11 @@ public class PaymentService {
 
     public PaymentDTO payment(PaymentRequest paymentRequest) {
 
+        //1. Find orders
         OrdersResponse orders = ordersClient.getOrders(paymentRequest.getOrdersId());
 
         //Todo: Handle payment process
+
         PaymentEntity payment = paymentRepository.save(PaymentEntity.builder()
                 .customerId(paymentRequest.getCustomerId())
                 .ordersId(paymentRequest.getOrdersId())
@@ -51,8 +53,10 @@ public class PaymentService {
                 .message(String.format("Hi %s. Your payment has been success. Thank you for visiting our PJ-AT team", paymentRequest.getCustomerName()))
                 .build();
 
-        notificationClient.sendNotification(notificationRequest);
+        //3. Send notification to notification.queue
+        rabbitMQProducer.publish("internal.exchange", "internal.notification.routing-key", notificationRequest);
 
+        //4. Map & return
         return paymentMapper.toDTO(payment);
     }
 }
