@@ -3,6 +3,15 @@ server:
   port: 8040
   error:
     include-message: always
+#Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 #Spring
 spring:
   application:

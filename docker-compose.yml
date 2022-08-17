@@ -19,6 +19,7 @@ services:
       - "9411:9411"
     networks:
       - spring
+      - monitoring
   rabbitmq:
     image: rabbitmq:3.9.20-management-alpine
     container_name: rabbitmq
@@ -27,6 +28,61 @@ services:
       - "15672:15672"
     networks:
       - spring
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    networks:
+      - monitoring
+    depends_on:
+      - eureka-server
+      - gateway
+      - customer
+      - orders
+      - product
+      - payment
+      - notification
+    restart: unless-stopped
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - "9100:9100"
+    networks:
+      - monitoring
+    depends_on:
+      - prometheus
+      - grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring
+    restart: unless-stopped
+    depends_on:
+      - prometheus
   eureka-server:
     image: ntloc/eureka-server:latest
     container_name: eureka-server
@@ -36,6 +92,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
+      - monitoring
     depends_on:
       - zipkin
   gateway:
@@ -45,6 +102,7 @@ services:
       - "8080:8080"
     networks:
       - spring
+      - monitoring
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
@@ -60,6 +118,7 @@ services:
     networks:
       - spring
       - mysql
+      - monitoring
     depends_on:
       - eureka-server
       - gateway
@@ -76,6 +135,7 @@ services:
     networks:
       - spring
       - mysql
+      - monitoring
     depends_on:
       - eureka-server
       - gateway
@@ -92,6 +152,7 @@ services:
     networks:
       - spring
       - mysql
+      - monitoring
     depends_on:
       - eureka-server
       - gateway
@@ -108,6 +169,7 @@ services:
     networks:
       - spring
       - mysql
+      - monitoring
     depends_on:
       - eureka-server
       - gateway
@@ -124,6 +186,7 @@ services:
     networks:
       - spring
       - mysql
+      - monitoring
     depends_on:
       - eureka-server
       - gateway
@@ -135,6 +198,9 @@ networks:
     driver: bridge
   mysql:
     driver: bridge
+  monitoring:
+    driver: bridge
 volumes:
   data:
+  prometheus_data: {}
 
