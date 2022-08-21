@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: payment
-          image: ntloc/payment:latest
+          image: ntloc/payment:21.08.2022.13.36.40
           imagePullPolicy: Always
           resources:
             requests:
