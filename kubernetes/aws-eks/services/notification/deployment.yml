@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: notification
-          image: ntloc/notification:21.08.2022.13.32.27
+          image: ntloc/notification:latest
           imagePullPolicy: Always
           resources:
             requests:
