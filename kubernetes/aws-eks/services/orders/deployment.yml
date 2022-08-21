@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: orders
-          image: ntloc/orders:17.08.2022.23.07.56
+          image: ntloc/orders:21.08.2022.13.32.27
           imagePullPolicy: Always
           resources:
             requests:
