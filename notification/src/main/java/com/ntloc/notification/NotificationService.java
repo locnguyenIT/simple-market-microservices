@@ -42,8 +42,8 @@ public class NotificationService {
                 .build());
 
         emailService.send(notificationRequest.getToCustomerEmail(),
-        buildEmail(notificationRequest.getToCustomerName(),
-                notificationRequest.getMessage()),notificationRequest.getSubject());
+                buildEmail(notificationRequest.getToCustomerName(),
+                        notificationRequest.getMessage()), notificationRequest.getSubject());
 
     }
 
