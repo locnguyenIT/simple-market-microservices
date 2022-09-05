@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: product
+      annotations:
+        kubernetes.io/change-cause: "ntloc/product:latest"
     spec:
       containers:
         - name: orders
