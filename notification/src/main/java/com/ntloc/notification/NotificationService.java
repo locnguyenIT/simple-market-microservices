@@ -48,10 +48,10 @@ public class NotificationService {
     }
 
     public String buildEmail(String name, String message) {
-        return "<p>Hi " + name + ",</p>"
+        return "<p>Hi<strong> " + name + ",</strong></p>"
                 + "<p>" + message + ". Have a nice day.</p>"
                 + "<p>Best regard,</p>"
-                + "<p>PJ-AT team</p>";
+                + "<p><strong>PJ-AT team</strong></p>";
     }
 
 }
