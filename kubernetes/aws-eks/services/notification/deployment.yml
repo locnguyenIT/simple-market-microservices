@@ -12,11 +12,11 @@ spec:
       labels:
         app: notification
       annotations:
-        kubernetes.io/change-cause: "ntloc/notification:latest"
+        kubernetes.io/change-cause: "ntloc/notification:05.09.2022.16.08.38"
     spec:
       containers:
         - name: notification
-          image: ntloc/notification:21.08.2022.13.36.40
+          image: ntloc/notification:05.09.2022.16.08.38
           imagePullPolicy: Always
           resources:
             requests:
