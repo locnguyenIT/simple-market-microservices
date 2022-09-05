@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: notification
+      annotations:
+        kubernetes.io/change-cause: "ntloc/notification:latest"
     spec:
       containers:
         - name: notification
