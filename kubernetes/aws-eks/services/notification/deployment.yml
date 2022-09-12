@@ -12,11 +12,11 @@ spec:
       labels:
         app: notification
       annotations:
-        kubernetes.io/change-cause: "ntloc/notification:12.09.2022.17.24.44"
+        kubernetes.io/change-cause: "ntloc/notification:12.09.2022.17.27.49"
     spec:
       containers:
         - name: notification
-          image: ntloc/notification:12.09.2022.17.24.44
+          image: ntloc/notification:12.09.2022.17.27.49
           imagePullPolicy: Always
           resources:
             requests:
