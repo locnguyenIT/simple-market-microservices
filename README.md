@@ -1,11 +1,12 @@
-#Overview
+# Overview
+
 This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud.
 
 ## Diagrams
 
-![](C:\Users\ntloc\OneDrive\Desktop\microservices-architecture.png)
+![microservices-architecture](https://user-images.githubusercontent.com/86077654/189718029-3025550c-0d5c-47a5-b648-ee51b37142b0.png)
 
-![](C:\Users\ntloc\OneDrive\Desktop\microservices-deploy-k8s.png)
+![microservices-deploy-k8s](https://user-images.githubusercontent.com/86077654/189718060-2ac43d6e-403c-43fa-b8b4-2d0f7bfabfe4.png)
 
 ## What are microservices ?
 Microservices are an architectural and organizational approach to software development where software is composed of small independent services that communicate over well-defined APIs. These services are owned by small, self-contained teams.
