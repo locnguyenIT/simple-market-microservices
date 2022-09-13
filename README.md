@@ -1,12 +1,17 @@
 # Overview
 
-This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud.
+This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud and deploy to Dokcer, Kubernetes .
 
 ## Diagrams
 
 ![microservices-architecture](https://user-images.githubusercontent.com/86077654/189718029-3025550c-0d5c-47a5-b648-ee51b37142b0.png)
 
 ![microservices-deploy-k8s](https://user-images.githubusercontent.com/86077654/189718060-2ac43d6e-403c-43fa-b8b4-2d0f7bfabfe4.png)
+
+# Idea
+* Client send a request to `customer` to perform `orders` then I check `product` customer want to orders exist or not. If product exist then I save `orders` then I push a message i.e notification to Message Queue which `Notification service` can pull message to send email to customer.
+
+* Same with orders is that when client send a request to `customer` to perform `payment` then I check `orders` user want to payment exist or not. If orders exist then I save `payment` then I push a message i.e notification to Message Queue which `Notification service` can pull message to send email to customer.
 
 ## What are microservices ?
 Microservices are an architectural and organizational approach to software development where software is composed of small independent services that communicate over well-defined APIs. These services are owned by small, self-contained teams.
@@ -19,14 +24,14 @@ With monolithic architectures, all processes are tightly coupled and run as a si
 With a microservices architecture, an application is built as independent components that run each application process as a service. Because they are independently run, each service can be updated, deployed, and scaled to meet demand for specific functions of an application.
 
 ## How to build microservices ?
-In this project, I have a lot of branches to describe step by step and I will explain one by one for you to understand. 
+In this project, I will explain all the step that I build. Also, I have a lot of branches to describe step by step. So, you can check out the code of each branch to follow along.
 
-# Step:
+## Step:
 - [1. Setup parent module](#1-setup-parent-module)
 - [2. Create microservices instances](#2-create-microservices-instances)
-- [3. Microservices communation using RestTemplate](#3-microservices-communation-resttemplate)
+- [3. Microservices communication using RestTemplate](#3-microservices-communication-resttemplate)
 - [4. Service Discovery](#4-service-discovery)
-- [5. Microservices communation using OpenFeign](#5-microservices-communation-openfeign)
+- [5. Microservices communication using OpenFeign](#5-microservices-communication-openfeign)
 - [6. Distributed Tracing](#6-distributed-tracing)
 - [7. API Gateway](#7-api-gateway)
 - [8. Message Queue using RabbitMQ](#8-message-queue-rabbitmq)
@@ -38,4 +43,24 @@ In this project, I have a lot of branches to describe step by step and I will ex
 - [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-k8s-cluster-prometheus-operator)
 - [15. CI/CD microserivces using Github Actions](#15-ci-cd-microserivces)
 
+## 1. Setup parent module
+* I use `dependencyManagement`, `pluginManagement` to define parent `pom.xml`and from that all sub-module i.e microserivces can pick one of list dependencies or plugin in there `pom.xml`
+
+## 2. Create microservices instances
+* To create microservices instances you need to create new sub-module then add some `dependency` and `plugin` that you want to your `pom.xml` and build like Spring Boot application normally i.e `Controller, Service, Repository`.
+
+## 3. Microservices communication using RestTemplate
+* After create microservices instances then I want all microservices communication between them i.e send `HTTP request`. I need to use `RestTemplate` to perform a request.
+* The `RestTemplate` is the central Spring class for client-side HTTP access.
+
+## 4. Service Discovery
+* The machanism for application & microservices  to locate each other on  a network i.e `host:port` to communication between them.
+* Spring Cloud provided `Eureka Server` & `Eureka Client` to perform Service Discovery
+
+## 5. Microservices communication using OpenFeign
+* Spring Cloud OpenFeign — a declarative REST client for Spring Boot app
+* Declarative REST Client: `Feign` is a declarative web service that creates a dynamic implementation of an `interface` decorated with JAX-RS or `Spring MVC annotations`.
+* Spring Cloud integrates `Eureka`, `Spring Cloud CircuitBreaker`, as well as `Spring Cloud LoadBalancer` to provide a load-balanced http client when using `Feign`.
+
+## 6. Distributed Tracing
 
