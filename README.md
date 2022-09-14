@@ -24,9 +24,9 @@ With monolithic architectures, all processes are tightly coupled and run as a si
 With a microservices architecture, an application is built as independent components that run each application process as a service. Because they are independently run, each service can be updated, deployed, and scaled to meet demand for specific functions of an application.
 
 ## How to build microservices ?
-In this project, I will explain all the step that I build. Also, I have a lot of branches to describe step by step. So, you can check out the code of each branch to follow along.
+In this project, I will explain all the step that I build. Beside that, I have a lot of branches to describe step by step corresponding to each branch. So, you can check out the code of each branch to follow along.
 
-## Step:
+## Steps:
 - [1. Setup parent module](#1-setup-parent-module)
 - [2. Create microservices instances](#2-create-microservices-instances)
 - [3. Microservices communication using RestTemplate](#3-microservices-communication-resttemplate)
@@ -34,7 +34,7 @@ In this project, I will explain all the step that I build. Also, I have a lot of
 - [5. Microservices communication using OpenFeign](#5-microservices-communication-openfeign)
 - [6. Distributed Tracing](#6-distributed-tracing)
 - [7. API Gateway](#7-api-gateway)
-- [8. Message Queue using RabbitMQ](#8-message-queue-rabbitmq)
+- [8. Message Queue](#8-message-queue)
 - [9. Package, run microservices with jar file](#9-package-run-microservices-with-jar-file)
 - [10. Containerize microserivces, build, push docker image to local and DockerHub using Jib](#10-containerize-microservice-build-docker-image-local-dockerhub-jib)
 - [11. Monitor microservices using Prometheus & Grafana](#11-monitor-microservices-using-prometheus-grafana)
@@ -44,23 +44,65 @@ In this project, I will explain all the step that I build. Also, I have a lot of
 - [15. CI/CD microserivces using Github Actions](#15-ci-cd-microserivces)
 
 ## 1. Setup parent module
-* I use `dependencyManagement`, `pluginManagement` to define parent `pom.xml`and from that all sub-module i.e microserivces can pick one of list dependencies or plugin in there `pom.xml`
+I use `dependencyManagement`, `pluginManagement` to define parent `pom.xml`and from that all sub-module i.e microserivces can pick one of list dependencies or plugin in there `pom.xml`
 
 ## 2. Create microservices instances
-* To create microservices instances you need to create new sub-module then add some `dependency` and `plugin` that you want to your `pom.xml` and build like Spring Boot application normally i.e `Controller, Service, Repository`.
+To create microservices instances you need to create new sub-module then add some `dependency` and `plugin` that you want to your `pom.xml` and build each Spring Boot application normally i.e `Controller, Service, Repository`, etc.
 
 ## 3. Microservices communication using RestTemplate
-* After create microservices instances then I want all microservices communication between them i.e send `HTTP request`. I need to use `RestTemplate` to perform a request.
-* The `RestTemplate` is the central Spring class for client-side HTTP access.
+After create microservices instances then I want all microservices communication between them i.e send `HTTP request`. I need to use `RestTemplate` to perform a request.
+
+The `RestTemplate` is the central Spring class for client-side HTTP access.
 
 ## 4. Service Discovery
-* The machanism for application & microservices  to locate each other on  a network i.e `host:port` to communication between them.
-* Spring Cloud provided `Eureka Server` & `Eureka Client` to perform Service Discovery
+The mechanism for application & microservices  to locate each other on  a network i.e `host:port` to communication between them.
 
+Spring Cloud provided `Eureka Server` & `Eureka Client` to perform Service Discovery.
+
+![img.png](img.png)
+* Step 1: Microservices register `Eureka Server` as a `Client` i.e `Eureka Client`.
+* Step 2: When microservices need to talk to another microservices, then they will look up to `Eureka Server` to know location i.e `host:port`.
+* Step 3: Microservices can connect with each other to perform HTTP request.
+
+Look at the diagram below to understand how service discovery work which is provided by `Spring Cloud Netflix Eureka`.
+
+![img_1.png](img_1.png)
 ## 5. Microservices communication using OpenFeign
-* Spring Cloud OpenFeign — a declarative REST client for Spring Boot app
+* Spring Cloud OpenFeign — a declarative REST client for Spring Boot app.
 * Declarative REST Client: `Feign` is a declarative web service that creates a dynamic implementation of an `interface` decorated with JAX-RS or `Spring MVC annotations`.
 * Spring Cloud integrates `Eureka`, `Spring Cloud CircuitBreaker`, as well as `Spring Cloud LoadBalancer` to provide a load-balanced http client when using `Feign`.
 
 ## 6. Distributed Tracing
+In microserivces architecture, microserivces talk to another microserivces via HTTP request. We need to know exactly the entire flow of request go though microservices. To do so, we need to use `Sleuth` and `Zipkin`.
+* `Spring Cloud Sleuth`: Spring Cloud Sleuth provides API for distributed tracing solution for Spring Cloud. Spring Cloud Sleuth is able to trace your requests and messages so that you can correlate that communication to corresponding log entries.
+    * Spring Cloud Sleuth adds `TraceID` and `SpanID` to the Slf4J MDC, so you can extract all the logs from a given trace or span in a log aggregator when a request come in. The following image shows how Span and Trace look in a system.
+      ![img_2.png](img_2.png)
+* `Zipkin`: Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. If you have a `trace ID` in a log file, you can jump directly to it.
 
+If `spring-cloud-sleuth-zipkin` is available and add `spring.zipkin.baseUrl` in spring profile then the app will generate and report Zipkin-compatible traces via HTTP.
+
+## 7. API Gateway
+`Spring Cloud Gateway` as know `API Gateway` or `Load Balancer` is a service that allows you to route traffic requests to different microservices endpoint. 
+
+The following diagram shows how a request route based on the `path` from Load Balancer to microservices in a system.
+
+![img_3.png](img_3.png)
+
+## 8. Message Queue
+`Message queue` is a form of asynchronous service-to-service communication used in serverless and microservices architectures.
+
+In this project I used `RabbitMQ` to perform message queue.
+
+`RabbitMQ` is the most widely deployed open source message broker. It support multiple messaging `protocols`.
+
+`AMQP 0-9-1` (Advanced Message Queuing Protocol) is a messaging `protocol` that enables conforming client applications to communicate with conforming messaging middleware `broker`.
+
+`Broker` receive messages from publishers (applications that publish them, also known as producers) and route them to consumers (applications that process them)
+
+When a messages are published from `producers` to `exchange`. The `Exchange` will distribute message to `queues` when `binding` the `exchange` to `queue` with `routing-key`. Then the broker either deliver messages to `consumers` subscribed to `queue`, or `consumers` fetch/pull messages from `queue` on demand.
+
+The following diagram shows how a message route from `producer` to `consumer` though message `broker` in a system.
+
+![img_4.png](img_4.png)
+
+## 9. Package, run microservices with jar file
