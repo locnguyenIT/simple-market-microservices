@@ -55,7 +55,7 @@ After create microservices instances then I want all microservices communication
 The `RestTemplate` is the central Spring class for client-side HTTP access.
 
 ## 4. Service Discovery
-The mechanism for application & microservices  to locate each other on  a network i.e `host:port` to communication between them.
+`The mechanism` for application & microservices  to locate each other on  a network i.e `host:port` to communication between them.
 
 Spring Cloud provided `Eureka Server` & `Eureka Client` to perform Service Discovery.
 
