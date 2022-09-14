@@ -83,6 +83,10 @@ In microserivces architecture, microserivces talk to another microserivces via H
 
 If `spring-cloud-sleuth-zipkin` is available and add `spring.zipkin.baseUrl` in spring profile then the app will generate and report Zipkin-compatible traces via HTTP.
 
+The following Zipkin UI shows the workflow of the request with TraceID when client request to the system.
+
+![sleuth-zipkin-workflow](https://user-images.githubusercontent.com/86077654/190231576-6fea9938-0bf2-49a0-a7df-c0a87ccb51f6.png)
+
 ## 7. API Gateway
 `Spring Cloud Gateway` as know `API Gateway` or `Load Balancer` is a service that allows you to route traffic requests to different microservices though the endpoint.
 
