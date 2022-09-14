@@ -12,11 +12,11 @@ spec:
       labels:
         app: customer
       annotations:
-        kubernetes.io/change-cause: "ntloc/customer:14.09.2022.17.51.54"
+        kubernetes.io/change-cause: "ntloc/customer:14.09.2022.18.23.28"
     spec:
       containers:
         - name: customer
-          image: ntloc/customer:14.09.2022.17.51.54
+          image: ntloc/customer:14.09.2022.18.23.28
           imagePullPolicy: Always
           resources:
             requests:
