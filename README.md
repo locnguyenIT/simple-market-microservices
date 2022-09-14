@@ -1,6 +1,6 @@
 # Overview
 
-This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud and deploy to Dokcer, Kubernetes .
+This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud and deploy to Docker, Kubernetes .
 
 ## Diagrams
 
