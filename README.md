@@ -91,7 +91,9 @@ If `spring-cloud-sleuth-zipkin` `dependency` is available and add `spring.zipkin
 
 The following Zipkin UI shows the flow of the request with TraceID when client request to the system.
 
-![sleuth-zipkin-workflow](https://user-images.githubusercontent.com/86077654/190231576-6fea9938-0bf2-49a0-a7df-c0a87ccb51f6.png)
+![sleuth-zipkin-workflow](https://user-images.githubusercontent.com/86077654/190493883-5d059f2d-0d89-45de-98a7-706cb5eeae63.png)
+
+![zipkin-ui-dependency](https://user-images.githubusercontent.com/86077654/190493633-4e065f08-1f96-4758-8256-117ea69f2bb4.png)
 
 ## 7. API Gateway
 `Spring Cloud Gateway` as know `API Gateway` or `Load Balancer` is a service that allows you to route traffic requests to different microservices though the endpoint.
@@ -184,9 +186,19 @@ Then, `Prometheus` use `prometheus.yml` file to know what microservices are avai
 
 After all the metrics are store in `Prometheus`, `Grafana` will pick up `Prometheus` as a `datasource` and create a series of dashboards to visualize the metrics.
 
+![grafana-datasources](https://user-images.githubusercontent.com/86077654/190490015-8d7abfd5-29c4-47cc-bbce-bd4b516f1975.png)
+
 ![grafana-jvm-1](https://user-images.githubusercontent.com/86077654/190485966-0492a59f-1981-4002-a7f2-4dba1db7cf0c.png)
 
 ![grafana-jvm-2](https://user-images.githubusercontent.com/86077654/190485950-4ac41d62-ad30-429c-aba2-fe612f3ca146.png)
+
+One thing I explore is that we can also pick `Zipkin` as a `datasource` to see the flow of the request. So, we won't need to open Zipkin UI anymore if you want.
+
+![grafana-zipkin](https://user-images.githubusercontent.com/86077654/190490614-79448886-6d64-4924-a33a-449a3f2d1928.png)
+
+![grafana-zipkin-trace](https://user-images.githubusercontent.com/86077654/190491543-23d0c344-5ba9-41f6-9fed-edeb75b32b48.png)
+
+![grafana-zipkin-trace-request](https://user-images.githubusercontent.com/86077654/190491569-68fa9b4a-8e38-4c13-bce4-2b6fa1c8b2c4.png)
 
 ## 12. Deploy microservices to local Kubernetes
 
