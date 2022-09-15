@@ -37,7 +37,7 @@ In this project, I will explain all the step that I build. Beside that, I have a
 - [8. Message Queue](#8-message-queue)
 - [9. Package, run microservices with jar file](#9-package-run-microservices-with-jar-file)
 - [10. Containerize microservices, build, push docker image to local and DockerHub using Jib](#10-containerize-microservices-build-push-docker-image-to-local-and-dockerhub-using-jib)
-- [11. Monitor microservices using Prometheus & Grafana](#11-monitor-microservices-using-prometheus-&-grafana)
+- [11. Monitor microservices using Prometheus and Grafana](#11-monitor-microservices-using-prometheus-and-grafana)
 - [12. Deploy microservices to local Kubernetes](#12-deploy-microservices-to-local-kubernetes)
 - [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks)
 - [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-k8s-cluster-prometheus-operator)
@@ -154,7 +154,7 @@ In my case, because I need to push the image to `local` and to `DockerHub`. So, 
 
 After you have an `image` of each microservices. You can deploy your microservices to `Docker` running as a `container` with `docker-compose.yml`file.
 
-## 11. Monitor microservices using Prometheus & Grafana
+## 11. Monitor microservices using Prometheus and Grafana
 
 Because our microservices run as an `independent service`. So, we need to check i.e, monitor how many resources microservices are using such as `CPU`, `Memory`, `Disk I/O`, etc. All the `information`/`metrics` can be exposed and collected by `Prometheus` and visualize the data in `Grafana`.
 
