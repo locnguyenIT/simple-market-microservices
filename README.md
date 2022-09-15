@@ -142,7 +142,7 @@ Most important is that you also need to define `spring-boot-maven-plugin` with t
 
 ## 10. Containerize microservices, build, push docker image to local and DockerHub using Jib
 
-![img_6.png](img_6.png)
+![jib](https://user-images.githubusercontent.com/86077654/190485763-6a6e5f1a-47fc-4cca-a1df-1e0a13772b38.png)
 
 `Jib` containerize your `Maven` or `Gradle` project to builds optimized `Docker` and `OCI` images for your Java applications without using a `Dockerfile` or requiring a Docker installation and without  deep mastery of Docker best-practices.
 
@@ -164,7 +164,7 @@ Because our microservices run as an `independent service`. So, we need to check 
 
 The following diagram shows how `Prometheus` and `Grafana` work together to monitor microservices.
 
-![img_7.png](img_7.png)
+![promehteus-grafana-workflow](https://user-images.githubusercontent.com/86077654/190485880-9900abc1-6258-48df-8a6e-2a6e902f5390.png)
 
 First, we need to add a `library` to expose all the metrics to `Prometheus` and that is `Micrometer`. In a Spring Boot application, a Prometheus `actuator` endpoint is `auto-configured` in the presence of `Spring Boot Actuator`.
 
@@ -174,20 +174,21 @@ First, we need to add a `library` to expose all the metrics to `Prometheus` and 
 
 Then, `Prometheus` use `prometheus.yml` file to know what microservices are available based on `target` to `scrape/pull` all the metrics.
 
-![img_8.png](img_8.png)
+![prometheus-target](https://user-images.githubusercontent.com/86077654/190486208-ac4f2502-3181-45dd-bd24-b7ab391c7e4e.png)
 
-![img_9.png](img_9.png)
+![prometheus-service-discovery](https://user-images.githubusercontent.com/86077654/190485917-de061dea-c6ab-4e8c-b9e8-db73476be34d.png)
 
-![img_10.png](img_10.png)
+![prometheus-table](https://user-images.githubusercontent.com/86077654/190486606-9bb2a799-938a-470c-8b23-34c0b2dadac4.png)
 
-![img_11.png](img_11.png)
+![prometheus-gragh](https://user-images.githubusercontent.com/86077654/190485908-1d640988-77e4-47a7-a35a-d93e6a63c18b.png)
 
 After all the metrics are store in `Prometheus`, `Grafana` will pick up `Prometheus` as a `datasource` and create a series of dashboards to visualize the metrics.
 
-![img_12.png](img_12.png)
+![grafana-jvm-1](https://user-images.githubusercontent.com/86077654/190485966-0492a59f-1981-4002-a7f2-4dba1db7cf0c.png)
 
-![img_13.png](img_13.png)
+![grafana-jvm-2](https://user-images.githubusercontent.com/86077654/190485950-4ac41d62-ad30-429c-aba2-fe612f3ca146.png)
 
+## 12. Deploy microservices to local Kubernetes
 
 
 
