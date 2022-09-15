@@ -12,11 +12,11 @@ spec:
       labels:
         app: payment
       annotations:
-        kubernetes.io/change-cause: "ntloc/payment:15.09.2022.18.50.34"
+        kubernetes.io/change-cause: "ntloc/payment:15.09.2022.19.03.05"
     spec:
       containers:
         - name: payment
-          image: ntloc/payment:15.09.2022.18.50.34
+          image: ntloc/payment:15.09.2022.19.03.05
           imagePullPolicy: Always
           resources:
             requests:
