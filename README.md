@@ -4,7 +4,7 @@ This project is build from scratch to finish based on microservices architecture
 
 ## Diagrams
 
-![microservices-architecture](https://user-images.githubusercontent.com/86077654/189718029-3025550c-0d5c-47a5-b648-ee51b37142b0.png)
+![microservices-architechture](https://user-images.githubusercontent.com/86077654/191076780-7a48bcde-c166-4538-8238-8986b002ef8f.png)
 
 ![microservices-deploy-k8s](https://user-images.githubusercontent.com/86077654/189718060-2ac43d6e-403c-43fa-b8b4-2d0f7bfabfe4.png)
 
@@ -39,7 +39,7 @@ In this project, I will explain all the step that I build. Beside that, I have a
 - [10. Containerize microservices, build, push docker image to local and DockerHub using Jib](#10-containerize-microservices-build-push-docker-image-to-local-and-dockerhub-using-jib)
 - [11. Monitor microservices using Prometheus and Grafana](#11-monitor-microservices-using-prometheus-and-grafana)
 - [12. Deploy microservices to local Kubernetes using Minikube](#12-deploy-microservices-to-local-kubernetes-using-minikube)
-- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks(elastic-kubernetes-service))
+- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks-elastic-kubernetes-service)
 - [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-kubernetes-cluster-using-prometheus-operator)
 - [15. CI/CD microservices using GitHub Actions](#15-ci-cd-microservices-using-github-actions)
 
@@ -202,7 +202,7 @@ One thing I explore is that we can also pick `Zipkin` as a `datasource` to see t
 
 ## 12. Deploy microservices to local Kubernetes using Minikube
 
-![img_15.png](img_15.png)
+![k8s-pod-orchestrator](https://user-images.githubusercontent.com/86077654/191076916-54abbf98-01bc-43b0-b776-859bd4100eb8.png)
 
 Kubernetes also known as K8S is an `application orchestrator`, an `open-source` system develop by `Google`, writen on `Golang` for 
 * Deploy & manage applications (`pod`, `container`).
@@ -214,11 +214,11 @@ Kubernetes also known as K8S is an `application orchestrator`, an `open-source` 
 Cluster:
 * A set of nodes.
 * Node - Virtual (`VM`) or `Physical Machine`.
-* A node can run on the Cloud such as AWS, Azure or Google Cloud.
+* A node can run on the Cloud such as `AWS`, `Azure` or `Google Cloud`.
 
 Kubernetes Cluster Architecture:
 
-![img_16.png](img_16.png)
+![k8s-cluster-architechture](https://user-images.githubusercontent.com/86077654/191076987-81c40889-4b4b-405e-a07c-0efc4ed8ec46.png)
 
 The Kubernetes Cluster is divided in two nodes : `master node` and `worker nodes`.
 
@@ -300,7 +300,6 @@ Steps for deploy to AWS EKS
 One thing to note here is that you need to
 * Have a `database` in AWS RDS to get the `endpoints`, `username` and `password` then put this information into `spring profile`. 
 * Config `Security Group` for AWS EKS can connect to AWS RDS. 
-
 
 ## 14. Monitor kubernetes cluster using Prometheus Operator
 
