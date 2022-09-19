@@ -202,6 +202,12 @@ One thing I explore is that we can also pick `Zipkin` as a `datasource` to see t
 
 ## 12. Deploy microservices to local Kubernetes
 
+Kubernetes - K8S - Application Orchestrator, is an open-source system develop by `Google`, writen on `Golang` for 
+* Deploy & manage (pod, container).
+* Scale up & down according demand
+* Zero downtime deployment
+* Rollback
+* More
 
 
 
