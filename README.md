@@ -1,6 +1,6 @@
 # Overview
 
-This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud and deploy to Docker, Kubernetes .
+This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud then deploy to Docker, Kubernetes .
 
 ## Diagrams
 
@@ -38,10 +38,10 @@ In this project, I will explain all the step that I build. Beside that, I have a
 - [9. Package, run microservices with jar file](#9-package-run-microservices-with-jar-file)
 - [10. Containerize microservices, build, push docker image to local and DockerHub using Jib](#10-containerize-microservices-build-push-docker-image-to-local-and-dockerhub-using-jib)
 - [11. Monitor microservices using Prometheus and Grafana](#11-monitor-microservices-using-prometheus-and-grafana)
-- [12. Deploy microservices to local Kubernetes](#12-deploy-microservices-to-local-kubernetes)
-- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks)
-- [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-k8s-cluster-prometheus-operator)
-- [15. CI/CD microservices using Github Actions](#15-ci-cd-microservices)
+- [12. Deploy microservices to local Kubernetes using Minikube](#12-deploy-microservices-to-local-kubernetes-using-minikube)
+- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks(elastic-kubernetes-service))
+- [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-kubernetes-cluster-using-prometheus-operator)
+- [15. CI/CD microservices using GitHub Actions](#15-ci-cd-microservices-using-github-actions)
 
 ## 1. Setup parent module
 To set up parent module i.e  `pom.xml`, we need to add `dependencyManagement`, `pluginManagement` and from that all sub-module i.e microserivces can pick one of list dependencies or plugin in there `pom.xml`
@@ -200,15 +200,111 @@ One thing I explore is that we can also pick `Zipkin` as a `datasource` to see t
 
 ![grafana-zipkin-trace-request](https://user-images.githubusercontent.com/86077654/190491569-68fa9b4a-8e38-4c13-bce4-2b6fa1c8b2c4.png)
 
-## 12. Deploy microservices to local Kubernetes
+## 12. Deploy microservices to local Kubernetes using Minikube
 
-Kubernetes - K8S - Application Orchestrator, is an open-source system develop by `Google`, writen on `Golang` for 
-* Deploy & manage (pod, container).
-* Scale up & down according demand
-* Zero downtime deployment
-* Rollback
-* More
+![img_15.png](img_15.png)
 
+Kubernetes also known as K8S is an `application orchestrator`, an `open-source` system develop by `Google`, writen on `Golang` for 
+* Deploy & manage applications (`pod`, `container`).
+* Scale up & down according demand.
+* Zero downtime deployment.
+* Rollback.
+* And more.
+
+Cluster:
+* A set of nodes.
+* Node - Virtual (`VM`) or `Physical Machine`.
+* A node can run on the Cloud such as AWS, Azure or Google Cloud.
+
+Kubernetes Cluster Architecture:
+
+![img_16.png](img_16.png)
+
+The Kubernetes Cluster is divided in two nodes : `master node` and `worker nodes`.
+
+* `The master node` also known as `Control Plane` is responsible for managing the cluster (brain of cluster), where all the decisions are made.
+  
+  * `API Server`: 
+    * `Frontend` to Kubernetes Control Plane.
+    * `Main entry point`.
+    * All `communication` go through `API Server` include `External` and `Internal`.
+    * Expose `RESTful API` on port 443.
+  
+  * `Cluster store`:
+    * Stores `configuration` and `state` of the entire cluster.
+    * Distribute Key Value data store.
+    * `etcd`: Single source of Truth (data).
+  
+  * `Scheduler`:
+    * Watch for `new workload/pod` and `assigns` them to a `node` based on several scheduling factors.
+    * Check `healthy`.
+    * Check `enough resource`.
+    * Check `port available`.
+    * etc.
+  
+  * `Controller Manager`:
+    * Manages the control loop (Controller of Controllers). `Control loop` is a non-terminating loop that regulates the `state` of the system, `watches` the shared `state` `(Desired State & Current State)` of the cluster though the `API Server`.
+  
+  * `Cloud Control Manager`: 
+    * Responsible to interact with underlying cloud provider such as `AWS`, `Azure` or `Google Cloud` to create the `Load Balancer`.
+
+    
+* `The worker nodes` responsible for running the applications.
+  
+  * `Kubelet`:
+    * `Main Agent` that run on every single node.
+    * Receive `Pod` definitions from `API Server`.
+    * Interacts with `Container runtime` to run `container` with the `Pod`.
+    * Report `Node` and `Pod` state to `Master Node` though `API Server`.
+  
+  * `Container runtime`:
+    * Responsible for running `containers`
+    * `Pull images` from container registries such as `DockerHub`, `ECR`, `ACR` or `GCR`.
+    * `Start` and `Stop` container.
+
+  * `Kube-proxy`:
+    * `Agent` run on every node.
+    * Responsible local cluster `networking`
+    * Each `node` get own `unique IP address`
+    * Implementing part of the Kubernetes `Service`
+    * Maintain `network rule` to allow communication to `pods` from `inside` and `outside` the cluster.
+    * Redirect traffic to `Pod` that match `Service` with `label`, `selector`.
+
+`Minikube`:
+
+* Great community
+* Add-ons and lots of feature
+* Great [documentation](https://minikube.sigs.k8s.io/docs/)
+
+`Kubectl`:
+* Kubernetes Command Line Tool.
+* Interact with the cluster from local machine.
+* Run command gains your cluster such as Deploy, Inspect, Edit, Debug, View logs, etc.
+
+## 13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)
+
+AWS EKS (Elastic Kubernetes Service) is a managed service that you can use to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes.
+
+Before started you need to install AWS CLI.
+
+AWS CLI – A command line tool for working with AWS services, including Amazon EKS.
+
+Steps for deploy to AWS EKS
+
+* Create Cluster
+* Add Node Group
+* Update `kube-config` for kubectl can connect to your cluster on the cloud with command below.
+  * aws eks update-kubeconfig --region `<your region>` --name `<cluster name>`
+* Use `kubectl` to apply all k8s resources i.e deployment, service, secret, configmap, etc.
+
+One thing to note here is that you need to
+* Have a `database` in AWS RDS to get the `endpoints`, `username` and `password` then put this information into `spring profile`. 
+* Config `Security Group` for AWS EKS can connect to AWS RDS. 
+
+
+## 14. Monitor kubernetes cluster using Prometheus Operator
+
+## 15. CI/CD microservices using GitHub Actions
 
 
 
