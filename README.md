@@ -303,7 +303,7 @@ One thing to note here is that you need to
 
 ## 14. Monitor kubernetes cluster using Prometheus Operator
 
-## 15. CI/CD microservices using GitHub Actions
+## 15. CI-CD microservices using GitHub Actions
 
 
 
