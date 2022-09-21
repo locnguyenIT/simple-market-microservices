@@ -301,8 +301,52 @@ One thing to note here is that you need to
 * Have a `database` in AWS RDS to get the `endpoints`, `username` and `password` then put this information into `spring profile`. 
 * Config `Security Group` for AWS EKS can connect to AWS RDS. 
 
-
 ## 14. Monitor kubernetes cluster using Prometheus Operator
+
+The `Prometheus Operator` provides Kubernetes native deployment and management of `Prometheus` and related monitoring components. The purpose of this project is to simplify and automate the configuration of a Prometheus based monitoring stack for Kubernetes clusters.
+
+The Prometheus operator includes, but is not limited to, the following features:
+
+* `Kubernetes Custom Resources`: Use Kubernetes custom resources to deploy and manage Prometheus, Alertmanager, and related components.
+
+* `Simplified Deployment Configuration`: Configure the fundamentals of Prometheus like versions, persistence, retention policies, and replicas from a native Kubernetes resource.
+
+* `Prometheus Target Configuration`: Automatically generate monitoring target configurations based on familiar Kubernetes label queries; no need to learn a Prometheus specific configuration language.
+
+**Prometheus Operator vs. kube-prometheus vs. community helm chart**
+
+* `Prometheus Operator`: The Prometheus Operator uses Kubernetes [custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) to simplify the deployment and configuration of `Prometheus`, `Alertmanager`, and related monitoring components.
+
+* `kube-prometheus`: [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) provides example configurations for a complete cluster monitoring stack based on `Prometheus` and the `Prometheus Operator`. This includes deployment of `multiple Prometheus` and `Alertmanager` instances, metrics exporters such as the `node_exporter` for gathering `node metrics`, scrape target configuration linking Prometheus to various metrics `endpoints`, and example alerting rules for notification of potential issues in the cluster.
+
+* `helm chart`: The [prometheus-community/kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) helm chart provides a similar feature set to kube-prometheus. This chart is maintained by the Prometheus community
+
+**Custom Resource Definitions**: A core feature of the `Prometheus Operator` is to monitor the `Kubernetes API` server for changes to specific objects and ensure that the current `Prometheus deployments` match these objects. The Operator acts on the following [custom resource definitions (CRDs)](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/):
+
+* `Prometheus`: which defines a desired Prometheus deployment.
+* `Alertmanager`: which defines a desired Alertmanager deployment.
+* `ThanosRuler`: which defines a desired Thanos Ruler deployment.
+* `ServiceMonitor`: which declaratively specifies how groups of `Kubernetes services` should be `monitored`. The Operator automatically generates Prometheus scrape configuration based on the current state of the objects in the `API server`.
+* `PodMonitor`: which declaratively specifies how group of pods should be monitored. The Operator automatically generates Prometheus scrape configuration based on the current state of the objects in the API server.
+* `Probe`: which declaratively specifies how groups of ingresses or static targets should be monitored. The Operator automatically generates Prometheus scrape configuration based on the definition.
+* `PrometheusRule`: which defines a desired set of Prometheus alerting and/or recording rules. The Operator generates a rule file, which can be used by Prometheus instances.
+* `AlertmanagerConfig`: which declaratively specifies subsections of the Alertmanager configuration, allowing routing of alerts to custom receivers, and setting inhibit rules.
+
+In this step I choose `kube-prometheus` to monitor my kubernetes cluster.
+
+`kube-prometheus` collects `Kubernetes manifests`, `Grafana` dashboards, and `Prometheus` rules combined with documentation and scripts to provide easy to operate end-to-end Kubernetes cluster monitoring with Prometheus using the `Prometheus Operator`.
+
+Components included in this package:
+* The [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)
+* Highly available [Prometheus](https://prometheus.io/)
+* Highly available [Alertmanager](https://github.com/prometheus/alertmanager)
+* Prometheus [node-exporter](https://github.com/prometheus/node_exporter)
+* [Prometheus Adapter for Kubernetes Metrics APIs](https://github.com/kubernetes-sigs/prometheus-adapter)
+* [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
+* [Grafana](https://grafana.com/)
+
+This stack is meant for cluster monitoring, so it is pre-configured to collect metrics from all Kubernetes components. In addition to that it delivers a default set of dashboards and alerting rules. Many of the useful `dashboards` and alerts come from the [kubernetes-mixin project](https://github.com/kubernetes-monitoring/kubernetes-mixin), similar to this project it provides composable jsonnet as a library for users to customize to their needs.
+
 
 ## 15. CI/CD microservices using GitHub Actions
 
