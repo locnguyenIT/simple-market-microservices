@@ -303,6 +303,8 @@ One thing to note here is that you need to
 
 ## 14. Monitor kubernetes cluster using Prometheus Operator
 
+![prometheus-operator](https://user-images.githubusercontent.com/86077654/191794193-0406438e-9957-4292-913e-e03f682bc2ee.png)
+
 The `Prometheus Operator` provides Kubernetes native deployment and management of `Prometheus` and related monitoring components. The purpose of this project is to simplify and automate the configuration of a Prometheus based monitoring stack for Kubernetes clusters.
 
 The Prometheus operator includes, but is not limited to, the following features:
@@ -346,7 +348,6 @@ Components included in this package:
 * [Grafana](https://grafana.com/)
 
 This stack is meant for cluster monitoring, so it is pre-configured to collect metrics from all Kubernetes components. In addition to that it delivers a default set of dashboards and alerting rules. Many of the useful `dashboards` and alerts come from the [kubernetes-mixin project](https://github.com/kubernetes-monitoring/kubernetes-mixin), similar to this project it provides composable jsonnet as a library for users to customize to their needs.
-
 
 ## 15. CI/CD microservices using GitHub Actions
 
