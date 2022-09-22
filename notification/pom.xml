@@ -168,6 +168,7 @@
                                 <image>${image}</image>
                                 <tags>
                                     <tag>latest</tag>
+                                    <tag>${image.custom.tag}</tag>
                                 </tags>
                             </to>
                         </configuration>
