@@ -152,7 +152,6 @@
                             <to>
                                 <image>${image}</image>
                                 <tags>
-                                    <tag>${image.custom.tag}</tag>
                                     <tag>latest</tag>
                                 </tags>
                             </to>
