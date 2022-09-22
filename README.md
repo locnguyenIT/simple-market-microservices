@@ -303,7 +303,7 @@ One thing to note here is that you need to
 
 ## 14. Monitor kubernetes cluster using Prometheus Operator
 
-![img_18.png](img_18.png)
+![prometheus-operator](https://user-images.githubusercontent.com/86077654/191794193-0406438e-9957-4292-913e-e03f682bc2ee.png)
 
 The `Prometheus Operator` provides Kubernetes native deployment and management of `Prometheus` and related monitoring components. The purpose of this project is to simplify and automate the configuration of a Prometheus based monitoring stack for Kubernetes clusters.
 
