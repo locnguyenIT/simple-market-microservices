@@ -4,9 +4,9 @@ This project is build from scratch to finish based on microservices architecture
 
 ## Diagrams
 
-![microservices-architecture](https://user-images.githubusercontent.com/86077654/189718029-3025550c-0d5c-47a5-b648-ee51b37142b0.png)
+![microservices-architechture](https://user-images.githubusercontent.com/86077654/191735223-c156d748-e2f7-4bdd-ad8d-a0b32565f4eb.png)
 
-![microservices-deploy-k8s](https://user-images.githubusercontent.com/86077654/189718060-2ac43d6e-403c-43fa-b8b4-2d0f7bfabfe4.png)
+![k8s-project-architechture](https://user-images.githubusercontent.com/86077654/191735766-e92fc85b-442c-456b-ac41-26117356d31b.png)
 
 # Idea
 * Client send a request to `customer` to perform `orders` then I check `product` customer want to orders exist or not. If product exist then I save `orders` then I push a message i.e notification to Message Queue which `Notification service` can pull message to send email to customer.
@@ -202,7 +202,7 @@ One thing I explore is that we can also pick `Zipkin` as a `datasource` to see t
 
 ## 12. Deploy microservices to local Kubernetes using Minikube
 
-![img_15.png](img_15.png)
+![k8s-pod-orchestrator](https://user-images.githubusercontent.com/86077654/191735226-cdf0be4f-fb9f-446c-8a76-9a3f15d28c66.png)
 
 Kubernetes also known as K8S is an `application orchestrator`, an `open-source` system develop by `Google`, writen on `Golang` for 
 * Deploy & manage applications (`pod`, `container`).
@@ -218,7 +218,7 @@ Cluster:
 
 Kubernetes Cluster Architecture:
 
-![img_16.png](img_16.png)
+![k8s-cluster-architechture](https://user-images.githubusercontent.com/86077654/191735235-2bac84e5-adb8-4fd0-9b39-7afc4f743701.png)
 
 The Kubernetes Cluster is divided in two nodes : `master node` and `worker nodes`.
 
