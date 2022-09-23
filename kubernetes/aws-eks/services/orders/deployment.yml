@@ -12,11 +12,11 @@ spec:
       labels:
         app: orders
       annotations:
-        kubernetes.io/change-cause: "ntloc/orders:22.09.2022.11.33.04"
+        kubernetes.io/change-cause: "ntloc/orders:23.09.2022.10.43.52"
     spec:
       containers:
         - name: orders
-          image: ntloc/orders:22.09.2022.11.33.04
+          image: ntloc/orders:23.09.2022.10.43.52
           imagePullPolicy: Always
           resources:
             requests:

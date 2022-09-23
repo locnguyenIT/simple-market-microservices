@@ -39,7 +39,6 @@ public class PaymentService {
         OrdersResponse orders = ordersClient.getOrders(paymentRequest.getOrdersId());
 
         //Todo: Handle payment process
-
         PaymentEntity payment = paymentRepository.save(PaymentEntity.builder()
                 .customerId(paymentRequest.getCustomerId())
                 .ordersId(paymentRequest.getOrdersId())
