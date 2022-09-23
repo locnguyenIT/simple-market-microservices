@@ -39,7 +39,7 @@ In this project, I will explain all the step that I build. Beside that, I have a
 - [10. Containerize microservices, build, push docker image to local and DockerHub using Jib](#10-containerize-microservices-build-push-docker-image-to-local-and-dockerhub-using-jib)
 - [11. Monitor microservices using Prometheus and Grafana](#11-monitor-microservices-using-prometheus-and-grafana)
 - [12. Deploy microservices to local Kubernetes using Minikube](#12-deploy-microservices-to-local-kubernetes-using-minikube)
-- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks(elastic-kubernetes-service))
+- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservices-to-aws-eks-elastic-kubernetes-service)
 - [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-kubernetes-cluster-using-prometheus-operator)
 - [15. CI-CD microservices using GitHub Actions](#15-ci-cd-microservices-using-github-actions)
 
@@ -361,7 +361,7 @@ Continuous integration (CI) and continuous delivery (CD), also known as CI/CD, e
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
-![ci-cd-microservices](https://user-images.githubusercontent.com/86077654/191990407-826d1cce-da7c-4030-856c-af5912de37fe.png)
+![ci-cd-microservices](https://user-images.githubusercontent.com/86077654/191994817-5a7dd265-cf25-4b6f-b309-01d972e27473.png)
 
 
 
