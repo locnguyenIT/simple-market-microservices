@@ -51,7 +51,7 @@ public class OrdersService {
                 .toCustomerName(ordersRequest.getCustomerName())
                 .toCustomerEmail(ordersRequest.getCustomerEmail())
                 .subject("Orders process")
-                .message("Your orders has been successfully.")
+                .message("Your orders has been success.")
                 .build();
 
         //3. Send notification to notification.queue
