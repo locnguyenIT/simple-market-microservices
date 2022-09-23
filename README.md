@@ -1,6 +1,6 @@
 # Overview
 
-This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud then deploy to Docker, Kubernetes .
+This project is build from scratch to finish based on microservices architecture using Spring Boot, Spring Cloud.
 
 ## Diagrams
 
@@ -24,7 +24,7 @@ With monolithic architectures, all processes are tightly coupled and run as a si
 With a microservices architecture, an application is built as independent components that run each application process as a service. Because they are independently run, each service can be updated, deployed, and scaled to meet demand for specific functions of an application.
 
 ## How to build microservices ?
-In this project, I will explain all the step that I build. Beside that, I have a lot of branches to describe step by step corresponding to each branch. So, you can check out the code of each branch to follow along.
+In this project, I will explain all the step that I build. Beside that, I have a lot of branches to describe step by step corresponding to each branch. So, you can check out the code of each branch and look at this [diagram](https://drive.google.com/file/d/1u_JnoCBdCW7OLZM-8d2OGq0OvBf01BlA/view?usp=sharing) to follow along.
 
 ## Steps:
 - [1. Setup parent module](#1-setup-parent-module)
