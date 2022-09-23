@@ -351,16 +351,17 @@ This stack is meant for cluster monitoring, so it is pre-configured to collect m
 
 ## 15. CI-CD microservices using GitHub Actions
 
+![ci-cd](https://user-images.githubusercontent.com/86077654/191990422-5fa96f12-e8d6-4cd4-9a63-99d29286de9d.png)
+
 Continuous integration (CI) and continuous delivery (CD), also known as CI/CD, embodies a culture, operating principles, and a set of practices that application development teams use to deliver code changes more frequently and reliably.
 
 `Continuous integration` is the practice of integrating all your code changes into the main branch of a shared source code repository early and often, automatically testing each change when you commit or merge them, and automatically kicking off a build.
 
 `Continuous delivery` picks up where continuous integration ends, and automates application delivery to selected environments, including production, development, and testing environments. Continuous delivery is an automated way to push code changes to these environments any time.
 
-![img_19.png](img_19.png)
+`GitHub Actions` is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
-
-
+![ci-cd-microservices](https://user-images.githubusercontent.com/86077654/191990407-826d1cce-da7c-4030-856c-af5912de37fe.png)
 
 
 
