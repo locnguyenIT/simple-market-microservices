@@ -39,7 +39,7 @@ In this project, I will explain all the step that I build. Beside that, I have a
 - [10. Containerize microservices, build, push docker image to local and DockerHub using Jib](#10-containerize-microservices-build-push-docker-image-to-local-and-dockerhub-using-jib)
 - [11. Monitor microservices using Prometheus and Grafana](#11-monitor-microservices-using-prometheus-and-grafana)
 - [12. Deploy microservices to local Kubernetes using Minikube](#12-deploy-microservices-to-local-kubernetes-using-minikube)
-- [13. Deploy microservices to AWS EKS](#13-deploy-microservice-to-aws-eks)
+- [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservices-to-aws-eks-elastic-kubernetes-service)
 - [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-kubernetes-cluster-using-prometheus-operator)
 - [15. CI-CD microservices using GitHub Actions](#15-ci-cd-microservices-using-github-actions)
 
