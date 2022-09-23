@@ -41,7 +41,7 @@ In this project, I will explain all the step that I build. Beside that, I have a
 - [12. Deploy microservices to local Kubernetes using Minikube](#12-deploy-microservices-to-local-kubernetes-using-minikube)
 - [13. Deploy microservices to AWS EKS (Elastic Kubernetes Service)](#13-deploy-microservice-to-aws-eks(elastic-kubernetes-service))
 - [14. Monitor kubernetes cluster using Prometheus Operator](#14-monitor-kubernetes-cluster-using-prometheus-operator)
-- [15. CI/CD microservices using GitHub Actions](#15-ci-cd-microservices-using-github-actions)
+- [15. CI-CD microservices using GitHub Actions](#15-ci-cd-microservices-using-github-actions)
 
 ## 1. Setup parent module
 To set up parent module i.e  `pom.xml`, we need to add `dependencyManagement`, `pluginManagement` and from that all sub-module i.e microserivces can pick one of list dependencies or plugin in there `pom.xml`
@@ -349,7 +349,15 @@ Components included in this package:
 
 This stack is meant for cluster monitoring, so it is pre-configured to collect metrics from all Kubernetes components. In addition to that it delivers a default set of dashboards and alerting rules. Many of the useful `dashboards` and alerts come from the [kubernetes-mixin project](https://github.com/kubernetes-monitoring/kubernetes-mixin), similar to this project it provides composable jsonnet as a library for users to customize to their needs.
 
-## 15. CI/CD microservices using GitHub Actions
+## 15. CI-CD microservices using GitHub Actions
+
+Continuous integration (CI) and continuous delivery (CD), also known as CI/CD, embodies a culture, operating principles, and a set of practices that application development teams use to deliver code changes more frequently and reliably.
+
+`Continuous integration` is the practice of integrating all your code changes into the main branch of a shared source code repository early and often, automatically testing each change when you commit or merge them, and automatically kicking off a build.
+
+`Continuous delivery` picks up where continuous integration ends, and automates application delivery to selected environments, including production, development, and testing environments. Continuous delivery is an automated way to push code changes to these environments any time.
+
+![img_19.png](img_19.png)
 
 
 
