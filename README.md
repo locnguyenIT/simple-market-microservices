@@ -63,7 +63,7 @@ Spring Cloud provided `Eureka Server` & `Eureka Client` to perform Service Disco
 
 * Step 1: Microservices register `Eureka Server` as a `Client` i.e `Eureka Client`.
 * Step 2: When microservices need to talk to another microservices, then they will look up to `Eureka Server` to know the location i.e `host:port`.
-* Step 3: Microservices can connect with each other just use service name to perform `HTTP request` .
+* Step 3: Microservices can connect with each other just use `service name` to perform `HTTP request` .
 
 Look at the diagram below to understand how service discovery work which is provided by `Spring Cloud Netflix Eureka`.
 
