@@ -6,7 +6,6 @@ import com.ntloc.client.orders.OrdersRequest;
 import com.ntloc.client.product.ProductClient;
 import com.ntloc.client.product.ProductResponse;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -51,7 +50,7 @@ public class OrdersService {
                 .toCustomerName(ordersRequest.getCustomerName())
                 .toCustomerEmail(ordersRequest.getCustomerEmail())
                 .subject("Orders process")
-                .message("Your orders has been successfully.")
+                .message("Your orders has been success.")
                 .build();
 
         //3. Send notification to notification.queue
