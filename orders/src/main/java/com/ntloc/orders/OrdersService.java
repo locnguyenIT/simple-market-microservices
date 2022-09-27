@@ -6,7 +6,6 @@ import com.ntloc.client.orders.OrdersRequest;
 import com.ntloc.client.product.ProductClient;
 import com.ntloc.client.product.ProductResponse;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
