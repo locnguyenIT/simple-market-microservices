@@ -1,6 +1,7 @@
 package com.ntloc.notification;
 
 import com.ntloc.client.notification.NotificationRequest;
+import com.ntloc.notification.aws.AWSEmailService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
