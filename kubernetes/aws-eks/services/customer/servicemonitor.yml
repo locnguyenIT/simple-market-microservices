@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: customer
+  namespace: default
+spec:
+  endpoints:
+    - interval: 30s
+      port: http
+      path: '/customer/actuator/prometheus'
+  selector:
+    matchLabels:
+      app: customer

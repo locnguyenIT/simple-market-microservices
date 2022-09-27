@@ -9,5 +9,6 @@ spec:
     app: product # has to match .metadata.labels.app && template.metadata.labels.app of deployment || stafulset
   ports:
     - port: 80
+      name: http
       targetPort: 8020 # has to match containerPort of deployment || stafulset
   type: ClusterIP #IP address
