@@ -1,7 +1,6 @@
 package com.ntloc.notification;
 
 import com.ntloc.client.notification.NotificationRequest;
-import com.ntloc.notification.aws.AWSEmailService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -42,8 +41,8 @@ public class NotificationService {
                 .build());
 
         emailService.send(notificationRequest.getToCustomerEmail(),
-        buildEmail(notificationRequest.getToCustomerName(),
-                notificationRequest.getMessage()),notificationRequest.getSubject());
+                buildEmail(notificationRequest.getToCustomerName(),
+                        notificationRequest.getMessage()), notificationRequest.getSubject());
 
     }
 
