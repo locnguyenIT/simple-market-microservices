@@ -1,6 +1,15 @@
 #Server
 server:
   port: 8080
+#Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
 #Spring
 spring:
   application:
