@@ -49,6 +49,7 @@ public class OrdersService {
                 .toCustomerId(ordersRequest.getCustomerId())
                 .toCustomerName(ordersRequest.getCustomerName())
                 .toCustomerEmail(ordersRequest.getCustomerEmail())
+                .subject("Orders process")
                 .message(String.format("Hi %s. Your orders has been success.", ordersRequest.getCustomerName()))
                 .build();
 

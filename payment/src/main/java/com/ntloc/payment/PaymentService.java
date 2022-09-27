@@ -50,6 +50,7 @@ public class PaymentService {
                 .toCustomerId(paymentRequest.getCustomerId())
                 .toCustomerName(paymentRequest.getCustomerName())
                 .toCustomerEmail(paymentRequest.getCustomerEmail())
+                .subject("Payment process")
                 .message(String.format("Hi %s. Your payment has been success. Thank you for visiting our PJ-AT team", paymentRequest.getCustomerName()))
                 .build();
 

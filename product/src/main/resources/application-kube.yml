@@ -1,0 +1,41 @@
+#Server
+server:
+  port: 8020
+  servlet:
+    context-path: /product
+  error:
+    include-message: always
+#Management
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+#Spring
+spring:
+  application:
+    name: product
+  datasource:
+    url: jdbc:mysql://mysql:3306/product
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show_sql: true
+  zipkin:
+    baseUrl: http://zipkin:9411
+#Eureka-Client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: false

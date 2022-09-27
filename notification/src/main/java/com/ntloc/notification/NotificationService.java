@@ -33,9 +33,12 @@ public class NotificationService {
                 .toCustomerId(notificationRequest.getToCustomerId())
                 .toCustomerName(notificationRequest.getToCustomerName())
                 .toCustomerEmail(notificationRequest.getToCustomerEmail())
+                .subject(notificationRequest.getSubject())
                 .sender(PJ_AT)
                 .message(notificationRequest.getMessage())
                 .sentAt(LocalDateTime.now())
                 .build());
+
     }
+
 }

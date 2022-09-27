@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "orders")
+@FeignClient(name = "orders", url = "${client.orders.url}")
 public interface OrdersClient {
 
-    @PostMapping(path = "/api/v1/orders")
+    @PostMapping(path = "/orders/api/v1/orders")
     OrdersResponse order(@RequestBody OrdersRequest ordersRequest);
 
-    @GetMapping(path = "/api/v1/orders/{id}")
+    @GetMapping(path = "/orders/api/v1/orders/{id}")
     OrdersResponse getOrders(@PathVariable("id") Long id);
 
 }

@@ -1,6 +1,8 @@
 #Server
 server:
   port: 8030
+  servlet:
+    context-path: /orders
   error:
     include-message: always
 #Management
