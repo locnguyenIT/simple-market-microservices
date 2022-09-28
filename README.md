@@ -361,6 +361,8 @@ Continuous integration (CI) and continuous delivery (CD), also known as CI/CD, e
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. You can create workflows that build and test every pull request to your repository, or deploy merged pull requests to production.
 
+The following diagram shows the CI-CD workflows work with GitHub Actions.
+
 ![ci-cd-microservices](https://user-images.githubusercontent.com/86077654/191994817-5a7dd265-cf25-4b6f-b309-01d972e27473.png)
 
 
